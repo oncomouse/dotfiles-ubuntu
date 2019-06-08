@@ -28,3 +28,7 @@ rm -rf tmux
 
 # Setup TERM:
 tic -x ./tmux-256color.terminfo
+
+# Setup Git:
+git config --global user.name "oncomouse"
+git config --global user.email "oncomouse@gmail.com"
