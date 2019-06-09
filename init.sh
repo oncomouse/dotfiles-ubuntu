@@ -7,11 +7,12 @@ sudo apt install vim fish python3-pip silversearcher-ag
 # Copy Configuration Files
 
 cp -r ~/dotfiles/.vim* ~/
-cp -r ~/.config ~/
+cp -r ~/dotfiles/.config ~/
 
 # Load vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall
 
 # Oh F@%$
 pip3 install thefuck
