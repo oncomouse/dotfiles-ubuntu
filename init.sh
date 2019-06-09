@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
+sudo apt-get upgrade -y
 # Install Necessary Tools:
 sudo apt install vim fish python3-pip silversearcher-ag
 
