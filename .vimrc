@@ -51,9 +51,9 @@ Plug 'reedes/vim-textobj-sentence'
 " Plug 'reedes/vim-textobj-quote'
 Plug 'junegunn/vim-easy-align' " ga will align blocks to indicated character
 " Web Development:
-" Plug 'chrisbra/Colorizer', { "for": ["html", "vue", "jsx", "js", "css", "scss"] }
-" Plug 'maksimr/vim-jsbeautify', { "for": ["html", "vue", "jsx", "js", "css", "scss"] }
-" Plug 'mattn/emmet-vim', { "for": ["html", "vue", "jsx", "js"] }
+Plug 'chrisbra/Colorizer', { 'for': ['html', 'vue', 'jsx', 'js', 'css', 'scss'] }
+Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'vue', 'jsx', 'js', 'css', 'scss'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'vue', 'jsx', 'js'] }
 " File Viewers:
 Plug 'ryanoasis/vim-devicons'
 " Plug 'scrooloose/nerdtree'
@@ -63,8 +63,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
 " Plug 'mgee/lightline-bufferline'
 " Linter:
-" Plug 'w0rp/ale.git'
-" Plug 'maximbaz/lightline-ale'
+Plug 'w0rp/ale'
+Plug 'maximbaz/lightline-ale'
 call plug#end()
 
 " Set <leader> and <localleader>:
