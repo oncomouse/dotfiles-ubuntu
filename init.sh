@@ -4,6 +4,11 @@ sudo apt-get update
 # Install Necessary Tools:
 sudo apt install vim fish python3-pip silversearcher-ag
 
+# Copy Configuration Files
+
+cp -r ~/dotfiles/.vim* ~/
+cp -r ~/.config ~/
+
 # Load vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -25,6 +30,11 @@ sudo make install
 sudo apt remove automake build-essential pkg-config libevent-dev libncurses5-dev bison
 cd ~/dotfiles
 rm -rf tmux
+
+# Configure TMUX
+git clone https://github.com/gpakosz/.tmux ~/.tmux
+ln -s -f .tmux/.tmux.conf
+cp ~/dotfiles/.tmux.conf.local ~/
 
 # Setup TERM:
 tic -x ./tmux-256color.terminfo
