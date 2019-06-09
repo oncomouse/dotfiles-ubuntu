@@ -3,7 +3,7 @@
 sudo apt-get update
 sudo apt-get upgrade -y
 # Install Necessary Tools:
-sudo apt install vim fish python3-pip silversearcher-ag
+sudo apt -y install vim fish python3-pip silversearcher-ag
 
 # Copy Configuration Files
 
@@ -23,13 +23,13 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # Build current TMUX
-sudo apt install automake build-essential pkg-config libevent-dev libncurses5-dev bison
+sudo apt -y install automake build-essential pkg-config libevent-dev libncurses5-dev bison
 git clone https://github.com/tmux/tmux.git ~/dotfiles/tmux
 cd ~/dotfiles/tmux
 git checkout tags/2.9a
 ./autogen.sh; ./configure; make
 sudo make install
-sudo apt remove automake build-essential pkg-config libevent-dev libncurses5-dev bison
+sudo apt -y remove automake build-essential pkg-config libevent-dev libncurses5-dev bison
 cd ~/dotfiles
 rm -rf tmux
 
@@ -50,7 +50,7 @@ sudo ufw allow OpenSSH
 sudo ufw enable
 
 # install fail2ban:
-sudo apt-get install fail2ban
+sudo apt-get -y install fail2ban
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 
 # IP Sec features:
@@ -61,3 +61,17 @@ echo "\n\thttps://dennisnotes.com/note/20180627-ubuntu-18.04-server-setup/\n"
 sudo groupadd admin
 sudo usermod -a -G admin andrew
 sudo dpkg-statoverride --update --add root admin 4750 /bin/su
+sudo passwd -l root
+
+# Secure /tmp
+sudo fallocate -l 1G /tmpdisk
+sudo mkfs.ext4 /tmpdisk
+sudo chmod 0600 /tmpdisk
+sudo mount -o loop,noexec,nosuid,rw /tmpdisk /tmp
+sudo chmod 1777 /tmp
+sudo fish -c "echo \"/tmpdisk/tmp ext4 loop,nosuid,noexec,rw 0 0\" >> /etc/fstab"
+sudo mv /var/tmp /var/tmpold
+sudo ln -s /tmp /var/tmp
+sudo cp -prf /var/tmpold/* /tmp/
+sudo rm -rf /var/tmpold/
+sudo fish -c "echo \"tmpfs /run/shm tmpfs ro,noexec,nosuid 0 0\" >> /etc/fstab"
