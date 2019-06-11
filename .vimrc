@@ -109,10 +109,9 @@ for files in s:config_list
   endfor
 endfor
 
+set modelines=0
+set nomodeline=0
 
 " Different highlighting for long lines:
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#182933
-
-
-
