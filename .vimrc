@@ -65,6 +65,8 @@ Plug 'itchyny/lightline.vim'
 " Linter:
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
+" Security:
+Plug 'ciaranm/securemodelines'
 call plug#end()
 
 " Set <leader> and <localleader>:
